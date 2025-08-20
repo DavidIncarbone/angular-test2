@@ -1,0 +1,17 @@
+<!-- <p>contatti works!</p> -->
+
+<!-- <div *ngIf="!isProfile; else profiloContatto"> -->
+<div style="display: flex; justify-content: space-around">
+  <div *ngIf="!isProfile">
+    <h1>Lista contatti</h1>
+
+    <div *ngFor="let persona of persone; index as i">
+      <a routerLink="/contatti/{{ i }}"> {{ persona.nome }} {{ persona.cognome }} </a>
+    </div>
+  </div>
+  <router-outlet> </router-outlet>
+</div>
+<!-- <ng-template #profiloContatto>
+   <p>Profilo di {{ persona.nome }} {{ persona.cognome }}</p> 
+  <app-contatto [personaContatto]="persona"></app-contatto>
+</ng-template> -->

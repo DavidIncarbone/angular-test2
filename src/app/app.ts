@@ -11,8 +11,8 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { About } from './componenti/about/about';
 import { Contact } from './componenti/contact/contact';
+import { Contatti } from './componenti/contatti/contatti';
 import { Home } from './componenti/home/home';
-import { Prova } from './prova/prova';
 import { ServizioProva } from './servizi/servizio-prova';
 
 @Component({
@@ -26,11 +26,12 @@ import { ServizioProva } from './servizi/servizio-prova';
     DecimalPipe,
     PercentPipe,
     CurrencyPipe,
-    Prova,
+    // Prova,
     CommonModule,
     Home,
     About,
     Contact,
+    Contatti,
     RouterLink,
   ],
   providers: [],
@@ -50,6 +51,6 @@ export class App {
   // }
 
   ngOnInit(): void {
-    console.log('app-component', this.servizioProva.persone);
+    console.log('app-component', this.servizioProva.getPersone());
   }
 }
