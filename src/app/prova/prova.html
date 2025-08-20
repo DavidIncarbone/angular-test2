@@ -1,0 +1,11 @@
+<p>prova works!</p>
+
+<ul>
+  @for(persona of getPersone(); track $index){ @if(persona.nome === 'Luca'){
+  {{
+    setPersona(getPersone().indexOf(persona), 'Marco')
+  }}
+  }
+  <li>{{ persona.nome }}</li>
+  }
+</ul>
