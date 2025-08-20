@@ -8,6 +8,10 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { About } from './componenti/about/about';
+import { Contact } from './componenti/contact/contact';
+import { Home } from './componenti/home/home';
 import { Prova } from './prova/prova';
 import { ServizioProva } from './servizi/servizio-prova';
 
@@ -15,6 +19,7 @@ import { ServizioProva } from './servizi/servizio-prova';
   selector: 'app-root',
   standalone: true,
   imports: [
+    RouterOutlet,
     UpperCasePipe,
     LowerCasePipe,
     DatePipe,
@@ -23,6 +28,10 @@ import { ServizioProva } from './servizi/servizio-prova';
     CurrencyPipe,
     Prova,
     CommonModule,
+    Home,
+    About,
+    Contact,
+    RouterLink,
   ],
   providers: [],
   templateUrl: './app.html',
