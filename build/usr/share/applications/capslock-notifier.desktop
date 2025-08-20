@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Caps Lock Notifier
+Exec=/usr/bin/python3 /usr/share/capslock-notifier/capslock_notifier.py
+Type=Application
+X-GNOME-Autostart-enabled=true
+NoDisplay=false

@@ -1,0 +1,7 @@
+Package: capslock-notifier
+Version: 1.0
+Architecture: amd64
+Maintainer: Tuoi Nome <tuo@email.com>
+Depends: python3, python3-notify2, python3-pynput, python3-pil, python3-gi
+Description: Caps Lock notifier with tray icon and notifications.
+ Caps Lock notifier that shows tray icon and desktop notifications on state change.
