@@ -4,10 +4,12 @@
 <div style="display: flex; justify-content: space-around">
   <div *ngIf="!isProfile">
     <h1>Lista contatti</h1>
-
     <div *ngFor="let persona of persone; index as i">
-      <a routerLink="/contatti/{{ i }}"> {{ persona.nome }} {{ persona.cognome }} </a>
+      <a routerLink="/contatti/{{ i }}"> {{ persona?.body?.nome }} {{ persona?.body?.cognome }} </a>
     </div>
+    <!-- @for(persona of persone; track $index){
+    <p>{{ persona?.body?.nome }}</p>
+    } -->
   </div>
   <router-outlet> </router-outlet>
 </div>

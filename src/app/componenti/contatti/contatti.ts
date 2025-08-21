@@ -1,6 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { Firebase } from '../../servizi/firebase';
 import { ServizioProva } from '../../servizi/servizio-prova';
 import { Contatto } from '../contatto/contatto';
 
@@ -14,10 +15,22 @@ export class Contatti implements OnInit {
   persone: any;
   // persona: any;
   isProfile: boolean = false;
-  constructor(private servizioProva: ServizioProva, private route: ActivatedRoute) {}
+  constructor(
+    private servizioProva: ServizioProva,
+    private route: ActivatedRoute,
+    private firebase: Firebase
+  ) {}
 
   ngOnInit(): void {
     this.persone = this.servizioProva.getPersone();
+    this.firebase
+      .getPersone('https://angular-db-4d81b-default-rtdb.firebaseio.com/persone.json')
+      .subscribe((data: any) => {
+        console.log(data);
+        this.persone = Object.keys(data).map((key) => data[key]);
+        console.log(this.persone);
+      });
+
     // this.isProfile = !this.route.snapshot.paramMap.get('id') ? false : true;
     // if (this.route.snapshot.paramMap.get('id')) {
     //   // this.isProfile = true;
