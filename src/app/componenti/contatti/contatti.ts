@@ -23,13 +23,14 @@ export class Contatti implements OnInit {
 
   ngOnInit(): void {
     this.persone = this.servizioProva.getPersone();
-    this.firebase
-      .getPersone('https://angular-db-4d81b-default-rtdb.firebaseio.com/persone.json')
-      .subscribe((data: any) => {
-        console.log(data);
-        this.persone = Object.keys(data).map((key) => data[key]);
-        console.log(this.persone);
+    this.firebase.getPersone(this.firebase.url).subscribe((data: any) => {
+      console.log(Object.keys(data));
+      this.persone = Object.keys(data).map((key) => {
+        data[key]['id'] = key;
+        return data[key];
       });
+      console.log(this.persone);
+    });
 
     // this.isProfile = !this.route.snapshot.paramMap.get('id') ? false : true;
     // if (this.route.snapshot.paramMap.get('id')) {

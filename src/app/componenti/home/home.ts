@@ -71,13 +71,14 @@ export class Home implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.homeform);
-    this.firebase
-      .insertPersona(
-        'https://angular-db-4d81b-default-rtdb.firebaseio.com/persone.json',
-        this.homeform.value
-      )
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.firebase.insertPersona(this.firebase.url, this.homeform.value).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  onDeletePersona() {
+    this.firebase.deletePersona(this.firebase.url, '-OYBowsdtAhrDTv7OMk3').subscribe((data) => {
+      console.log(data);
+    });
   }
 }

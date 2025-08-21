@@ -2,6 +2,7 @@ import { NgStyle } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, RouterLink, RouterOutlet } from '@angular/router';
 import { Highlight } from '../../direttive/highlight';
+import { Firebase } from '../../servizi/firebase';
 import { ServizioProva } from '../../servizi/servizio-prova';
 
 @Component({
@@ -16,19 +17,26 @@ export class Contatto implements OnInit {
   // persona: any;
   // @Input() personaContatto: any;
   persona: any;
-  id: number | undefined;
+  id: string | undefined;
   color: string = '';
 
-  constructor(private servizioProva: ServizioProva, private route: ActivatedRoute) {}
+  constructor(
+    private servizioProva: ServizioProva,
+    private route: ActivatedRoute,
+    protected firebase: Firebase
+  ) {}
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id')!;
+    this.id = this.route.snapshot.paramMap.get('id')!;
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = +params.get('id')!;
-      this.persona = this.servizioProva.getPersona(this.id);
-      this.color = this.persona.colore;
+      this.id = params.get('id')!;
+      this.firebase.getPersona(this.firebase.url, this.id).subscribe((data) => {
+        console.log(data);
+        return (this.persona = data);
+      });
+      // this.color = this.persona.colore;
     });
-    this.color = this.persona.color;
+    // this.color = this.persona.color;
     // if (this.route.snapshot.paramMap.get('id')) {
     //   // this.isProfile = true;
     //   this.persona = this.servizioProva.getPersona(

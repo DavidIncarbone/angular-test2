@@ -5,5 +5,7 @@
 <p>Profilo di Nome e cognome</p>
 <p>Colore preferito: blue</p> -->
 
-<p>Profilo di {{ persona.nome }} {{ persona.cognome }}</p>
-<p [ngStyle]="{ backgroundColor: persona.color }">Colore preferito: {{ persona.color }}</p>
+<p>Profilo di {{ persona?.body?.nome }} {{ persona?.body?.email }}</p>
+<p [ngStyle]="{ backgroundColor: persona?.body?.colore }">
+  Colore preferito: {{ persona?.body?.colore }}
+</p>
