@@ -37,6 +37,7 @@ import { ServizioProva } from './servizi/servizio-prova';
     RouterLink,
     MatFormFieldModule,
     ReactiveFormsModule,
+    // BrowserModule,
   ],
   providers: [],
   templateUrl: './app.html',
