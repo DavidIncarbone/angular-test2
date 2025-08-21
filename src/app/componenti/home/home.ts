@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { Firebase } from '../../servizi/firebase';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,7 @@ export class Home implements OnInit, OnDestroy {
   // @ViewChild('homeform') homeform!: NgForm;
   homeform!: FormGroup;
 
-  constructor() {}
+  constructor(private firebase: Firebase) {}
 
   ngOnInit(): void {
     // this.sottoscrizione = interval(1000).subscribe((numero) => {
@@ -47,6 +48,15 @@ export class Home implements OnInit, OnDestroy {
       email: new FormControl(null, [Validators.required, Validators.email]),
       colore: new FormControl(),
     });
+
+    // this.firebase
+    //   .insertPersona('https://angular-db-4d81b-default-rtdb.firebaseio.com/persone.json', {
+    //     nome: 'Luca',
+    //     email: 'luca@email.it',
+    //   })
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //   });
   }
 
   ngOnDestroy(): void {
@@ -61,5 +71,13 @@ export class Home implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.homeform);
+    this.firebase
+      .insertPersona(
+        'https://angular-db-4d81b-default-rtdb.firebaseio.com/persone.json',
+        this.homeform.value
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
 }
