@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
+    ReactiveFormsModule,
+    NgIf,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './home.html',
@@ -24,8 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class Home implements OnInit, OnDestroy {
   // sottoscrizione: any;
-
-  @ViewChild('homeform') homeform!: NgForm;
+  // @ViewChild('homeform') homeform!: NgForm;
+  homeform!: FormGroup;
 
   constructor() {}
 
@@ -33,15 +42,24 @@ export class Home implements OnInit, OnDestroy {
     // this.sottoscrizione = interval(1000).subscribe((numero) => {
     //   // console.log(numero);
     // });
+    this.homeform = new FormGroup({
+      nome: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      colore: new FormControl(),
+    });
   }
 
   ngOnDestroy(): void {
     // this.sottoscrizione.unsubscribe();
   }
 
-  onSubmit(form: any) {
-    // prendi dati form
-    // li mandi con il service al backend
+  // onSubmit(form: any) {
+  // prendi dati form
+  // li mandi con il service al backend
+  // console.log(this.homeform);
+  // }
+
+  onSubmit() {
     console.log(this.homeform);
   }
 }
