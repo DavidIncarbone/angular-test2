@@ -51,6 +51,18 @@ export class App {
   // }
 
   ngOnInit(): void {
-    console.log('app-component', this.servizioProva.getPersone());
+    // console.log(interval(1000))
+    // interval(1000).subscribe((numero) => {
+    //   console.log(numero);
+    // });
+    // new Observable((observer) => {
+    //   let count = 0;
+    //   setInterval(() => {
+    //     observer.next(count);
+    //     count++;
+    //   }, 1000);
+    // }).subscribe((numero) => {
+    //   console.log(numero);
+    // });
   }
 }
