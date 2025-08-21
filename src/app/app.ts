@@ -8,6 +8,7 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { About } from './componenti/about/about';
 import { Contact } from './componenti/contact/contact';
@@ -33,6 +34,7 @@ import { ServizioProva } from './servizi/servizio-prova';
     Contact,
     Contatti,
     RouterLink,
+    MatFormFieldModule,
   ],
   providers: [],
   templateUrl: './app.html',
