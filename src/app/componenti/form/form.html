@@ -1,11 +1,11 @@
 <!-- <form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)"> -->
-<form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+<form [formGroup]="mainform" (Ng)="(onSubmitAction)">
   <mat-form-field>
     <mat-label>Nome</mat-label>
     <!-- <input matInput name="nome" ngModel required /> -->
     <input matInput name="nome" formControlName="nome" />
   </mat-form-field>
-  <p *ngIf="!homeform.get('nome')?.valid && homeform.get('nome')?.touched">Inserisci un nome</p>
+  <p *ngIf="!mainform.get('nome')?.valid && mainform.get('nome')?.touched">Inserisci un nome</p>
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <!-- <input matInput type="email" name="email" ngModel required email /> -->
@@ -19,7 +19,6 @@
       <mat-option value="blu">Blu</mat-option>
     </mat-select>
   </mat-form-field>
-  <button matButton="outlined" type="submit" [disabled]="!homeform.valid">Invia</button>
+  <button matButton="outlined" type="submit" [disabled]="!mainform.valid">Invia</button>
 </form>
-<button matButton="outlined" (click)="onDeletePersona()">Elimina utente</button
-><button matButton="outlined" (click)="onPatchPersona()">Modifica utente</button>
+<!-- <button matButton="outlined" (click)="onDeletePersona()">Elimina utente</button> -->

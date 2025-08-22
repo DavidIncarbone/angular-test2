@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class Firebase {
   url: string = 'https://angular-db-4d81b-default-rtdb.firebaseio.com/persone';
+  endUrl: string = '/body.json';
   constructor(private http: HttpClient) {}
 
   insertPersona(url: string, body: {}) {
@@ -17,10 +18,14 @@ export class Firebase {
   }
 
   getPersona(url: string, id: string) {
-    return this.http.get(`${url}/${id}.json`);
+    return this.http.get(`${url}/${id}${this.endUrl}`);
   }
 
   deletePersona(url: string, id: string) {
-    return this.http.delete(`${url}/${id}.json`);
+    return this.http.delete(`${url}/${id}${this.endUrl}`);
+  }
+
+  patchPersona(url: string, id: string, body: {}) {
+    return this.http.patch(`${url}/${id}${this.endUrl}`, body);
   }
 }

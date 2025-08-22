@@ -81,4 +81,14 @@ export class Home implements OnInit, OnDestroy {
       console.log(data);
     });
   }
+
+  onPatchPersona() {
+    this.firebase
+      .patchPersona(this.firebase.url, '-OYC8tZeV_P8SeYjM68M', {
+        email: 'ciaoooo@prova.it',
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
 }
