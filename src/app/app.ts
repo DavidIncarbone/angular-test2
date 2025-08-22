@@ -4,17 +4,24 @@ import {
   DatePipe,
   DecimalPipe,
   LowerCasePipe,
+  NgIf,
   PercentPipe,
   UpperCasePipe,
 } from '@angular/common';
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { About } from './componenti/about/about';
 import { Contact } from './componenti/contact/contact';
 import { Contatti } from './componenti/contatti/contatti';
 import { Home } from './componenti/home/home';
+import { Signup } from './componenti/signup/signup';
 import { ServizioProva } from './servizi/servizio-prova';
 
 @Component({
@@ -34,9 +41,19 @@ import { ServizioProva } from './servizi/servizio-prova';
     About,
     Contact,
     Contatti,
+    Signup,
     RouterLink,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    NgIf,
     // BrowserModule,
   ],
   providers: [],
