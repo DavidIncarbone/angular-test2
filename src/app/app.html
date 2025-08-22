@@ -60,6 +60,12 @@ DATE PIPE
   <a routerLink="">Home</a>
   <a routerLink="contatti">Contatti</a>
   <a routerLink="signup">Registrati</a>
+  @if(authService.user){
+  <button (click)="logout()">Logout</button>
+  } @else {
+
+  <a routerLink="signin">Login</a>
+  }
   <!-- <a routerLink="about">about</a>
   <a routerLink="contact">contact</a> -->
 </nav>

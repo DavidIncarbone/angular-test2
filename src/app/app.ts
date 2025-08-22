@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from './auth/auth';
 import { About } from './componenti/about/about';
 import { Contact } from './componenti/contact/contact';
 import { Contatti } from './componenti/contatti/contatti';
@@ -61,7 +62,7 @@ import { ServizioProva } from './servizi/servizio-prova';
   styleUrl: './app.css',
 })
 export class App {
-  constructor(private servizioProva: ServizioProva) {}
+  constructor(private servizioProva: ServizioProva, public authService: AuthService) {}
   title = 'ANGULAR-TEST2';
   // numero = 5.33333333333333;
   numero = 5;
@@ -73,6 +74,11 @@ export class App {
   // }
 
   ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+      const userJson = localStorage.getItem('user');
+      const user = userJson ? JSON.parse(userJson) : null;
+      user && this.authService.createUser(user.email, user.id, user._token, user._expirationDate);
+    }
     // console.log(interval(1000))
     // interval(1000).subscribe((numero) => {
     //   console.log(numero);
@@ -86,5 +92,9 @@ export class App {
     // }).subscribe((numero) => {
     //   console.log(numero);
     // });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

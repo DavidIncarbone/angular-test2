@@ -6,12 +6,14 @@ import { Contatti } from './componenti/contatti/contatti';
 import { Contatto } from './componenti/contatto/contatto';
 import { Home } from './componenti/home/home';
 import { NotFound } from './componenti/not-found/not-found';
+import { Signin } from './componenti/signin/signin';
 import { Signup } from './componenti/signup/signup';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/homepage' },
   { path: 'homepage', component: Home },
   { path: 'signup', component: Signup },
+  { path: 'signin', component: Signin },
   { path: 'about', component: About },
   { path: 'contact', component: Contact },
   {
