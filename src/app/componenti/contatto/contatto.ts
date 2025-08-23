@@ -30,6 +30,7 @@ export class Contatto implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id')!;
+      console.log(this.id);
       this.firebase.getPersona(this.firebase.url, this.id).subscribe((data) => {
         console.log(data);
         return (this.persona = data);

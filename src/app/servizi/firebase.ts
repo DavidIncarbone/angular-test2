@@ -21,7 +21,7 @@ export class Firebase {
   }
 
   getPersona(url: string, id: string) {
-    return this.http.get(`${url}/${id}${this.endUrl}`);
+    return this.http.get(`${url}/${id}${this.endUrl}?auth=${this.authService.user?.token}`);
   }
 
   deletePersona(url: string, id: string) {
